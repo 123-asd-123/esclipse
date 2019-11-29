@@ -1,32 +1,32 @@
 package JDBC;
-
+//abcsd
 import java.sql.*;
 
 public class LoginDao {
-	public int login(String name, String pwd)//1´ú±íµÇÂ¼³É¹¦  0ÊÇµÇÂ½Ê§°Ü -1ÏµÍ³Òì³£
+	public int login(String name, String pwd)//1ä»£è¡¨ç™»å½•æˆåŠŸ  0æ˜¯ç™»é™†å¤±è´¥ -1ç³»ç»Ÿå¼‚å¸¸
 	{
-		//Òªµ¼°ü Ö±½Ó¸´ÖÆµ½libÄ¿Â¼ÏÂ ½øĞĞµ¼°ü
-				//ºËĞÄ:¾ÍÊÇ½²javaÖĞµÄJDBC´úÂë ¸´ÖÆµ½JSPÖĞµÄ<%...ÖĞ
+		//è¦å¯¼åŒ… ç›´æ¥å¤åˆ¶åˆ°libç›®å½•ä¸‹ è¿›è¡Œå¯¼åŒ…
+				//æ ¸å¿ƒ:å°±æ˜¯è®²javaä¸­çš„JDBCä»£ç  å¤åˆ¶åˆ°JSPä¸­çš„<%...ä¸­
 				String URL = "jdbc:mysql://localhost:3306/girls";
 				String USERNAME ="root";
 			 	String pWD = "cwq352406";
-				//·ÃÎÊÊı¾İ¿â Ç¶Ì×java´úÂë 
-				//JSP¾ÍÊÇÔÚhtmlÀïÃæÇ¶Ì×java´úÂë
-				//´´½¨semtÁ¬½Ó¶ÔÏó ²»´´½¨»á±¨¿ÕÖ¸Õë´íÎó
+				//è®¿é—®æ•°æ®åº“ åµŒå¥—javaä»£ç  
+				//JSPå°±æ˜¯åœ¨htmlé‡Œé¢åµŒå¥—javaä»£ç 
+				//åˆ›å»ºsemtè¿æ¥å¯¹è±¡ ä¸åˆ›å»ºä¼šæŠ¥ç©ºæŒ‡é’ˆé”™è¯¯
 				ResultSet rs = null;
 				Statement stmt = null;
 				Connection connection = null;
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
 					
-					//ÓëÊı¾İ¿â½¨Á¢Á¬½Ó
+					//ä¸æ•°æ®åº“å»ºç«‹è¿æ¥
 					 connection = DriverManager.getConnection(URL, USERNAME, pWD);
 					
 					stmt = connection.createStatement();
 					
 					String sql = "select count(*) from author where au_name = '"+name+"' and nation = '"+pwd+"' ";
 					
-					//´¦Àí½á¹û¼¯
+					//å¤„ç†ç»“æœé›†
 					rs= stmt.executeQuery(sql);
 					int count = -1;
 					if(rs.next())
@@ -49,7 +49,7 @@ public class LoginDao {
 				finally {
 					try {
 						if(rs!=null)rs.close();
-						if(stmt!=null)stmt.close();//¶ÔÏó.·½·¨²Ù×÷Êı¾İ¿â
+						if(stmt!=null)stmt.close();//å¯¹è±¡.æ–¹æ³•æ“ä½œæ•°æ®åº“
 						if(connection!=null)connection.close();
 					} catch (SQLException e) {
 						// TODO: handle exception
